@@ -1,3 +1,6 @@
+from decimal import Decimal
+
+
 """
 Parameter class.
     - fields:
@@ -22,15 +25,18 @@ class Parameter:
     def Range(self, newRange):  # setting the parameter range
         self.range = newRange
 
+        self.LeftFunction(lin_equ((self.range[0], 0), (self.range[2], 1)))
+        self.RightFunction(lin_equ((self.range[2], 1), (self.range[1], 0)))
+
         return self
     
-    def LeftFunction(self, a, b):  # setting the left function parameters
-        self.lbf.update(dict(a=a, b=b))
+    def LeftFunction(self, value):  # setting the left function parameters
+        self.lbf.update(dict(a=value[0], b=value[1]))
 
         return self
 
-    def RightFunction(self, a, b):  # setting the right function parameters
-        self.rbf.update(dict(a=a, b=b))
+    def RightFunction(self, value):  # setting the right function parameters
+        self.rbf.update(dict(a=value[0], b=value[1]))
 
         return self 
 
@@ -48,9 +54,9 @@ class Parameter:
         if x <= self.range[0]:  # left 
             return self.lrv
         elif x > self.range[0] and x < self.range[2]:  # middle left
-            return self.lbf.get('a') * x + self.lbf.get('b')
+            return self.lbf.get('a') * Decimal(x) + self.lbf.get('b')
         elif x >= self.range[2] and x < self.range[1]:  # middle right
-            return self.rbf.get('a') * x + self.rbf.get('b')
+            return self.rbf.get('a') * Decimal(x) + self.rbf.get('b')
         elif x >= self.range[1]:  # right
             return self.rrv
 
@@ -62,3 +68,9 @@ class Parameter:
             LeftRangeValue=self.lrv,
             RightRangeValue=self.rrv
         )
+
+
+def lin_equ(l1, l2):  # calculating the line from two points
+    m = Decimal((l2[1] - l1[1])) / Decimal(l2[0] - l1[0])
+    c = (l2[1] - (m * l2[0]))
+    return m, c
