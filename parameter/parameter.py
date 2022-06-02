@@ -9,7 +9,7 @@ Parameter class.
 
 """
 class Parameter:
-    def __init__(self):
+    def __init__(self):  # constructor
         # parameter range
         self.range = [0, 0, 0]
         # parameter base functions
@@ -21,22 +21,34 @@ class Parameter:
 
         return self
     
-    def Range(self):
+    def Range(self, newRange):  # setting the parameter range
+        self.range = newRange
+
         return self
     
-    def LeftFunction(self):
+    def LeftFunction(self, a, b):  # setting the left function parameters
+        self.lbf.a = a
+        self.lbf.b = b
+
         return self
 
-    def RightFunction(self):
+    def RightFunction(self, a, b):  # setting the right function parameters
+        self.rbf.a = a
+        self.rbf.b = b
+
         return self 
 
-    def LeftValue(self):
+    def LeftValue(self, value):  # setting the left value range
+        self.lrv = value
+
         return self
     
-    def RightValue(self):
+    def RightValue(self, value):  # setting the right value range
+        self.rrv = value
+
         return self
 
-    def Input(self, x):
+    def Input(self, x):  # calculating the output of parameter
         y = x
 
         return y
