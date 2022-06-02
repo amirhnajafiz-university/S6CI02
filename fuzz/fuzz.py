@@ -1,5 +1,6 @@
 from parameter import Parameter
 
+
 """
 Expert fuzzy system class.
     - this class has parameters that each parameter has a range and
@@ -32,6 +33,6 @@ class EFS:
 
     def Info(self):  # EFS information
         return dict(
-            Length=len(self.parameters)
+            Length=len(self.parameters),
             Parameters=self.parameters
         )
