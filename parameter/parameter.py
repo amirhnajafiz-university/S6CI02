@@ -49,6 +49,11 @@ class Parameter:
         return self
 
     def Input(self, x):  # calculating the output of parameter
-        y = x
-
-        return y
+        if x <= self.range[0]:  # left 
+            return self.lrv
+        elif x > self.range[0] and x < self.range[2]:  # middle left
+            return self.lbf.a * x + self.lbf.b
+        elif x >= self.range[2] and x < self.range[1]:  # middle right
+            return self.rbf.a * x + self.rbf.b
+        elif x >= self.range[1]:  # right
+            return self.rrv
