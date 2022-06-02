@@ -2,12 +2,16 @@
 Parser get rules method reads the rules files and returns the rules.
 """
 
+
 import simplejson
 
 
-NORMAL = 'NONE'
 AND_OPERATOR = 'AND'
 OR_OPERATOR = 'OR'
+
+
+def atomic_trim(input):
+    return input.replace("(", "").replace(")", "").split(" IS ")
 
 
 def getRules():
@@ -26,22 +30,24 @@ def getRules():
             removeIF = line.strip().replace(";", "").split("IF")[1].strip()
             # split into two parts by then
             parts = removeIF.split(" THEN ")
-            # check the AND
+            # the rules check
+            rules = []
             if AND_OPERATOR in parts[0]:
-                line_info['type'] = AND_OPERATOR
+                line_info['type'] = 'MIN'
                 two = parts[0].split(" " + AND_OPERATOR + " ")
-                line_info['condition_1'] = two[0].replace("(", "").replace(")", "").split(" IS ")
-                line_info['condition_2'] = two[1].replace("(", "").replace(")", "").split(" IS ")
+                rules.append(atomic_trim(two[0]))
+                rules.append(atomic_trim(two[1]))
             elif OR_OPERATOR in parts[0]:
-                line_info['type'] = OR_OPERATOR
+                line_info['type'] = 'MAX'
                 two = parts[0].split(" " + OR_OPERATOR + " ")
-                line_info['condition_1'] = two[0].replace("(", "").replace(")", "").split(" IS ")
-                line_info['condition_2'] = two[1].replace("(", "").replace(")", "").split(" IS ")
+                rules.append(atomic_trim(two[0]))
+                rules.append(atomic_trim(two[1]))
             else:
-                line_info['type'] = NORMAL
-                line_info['condition_1'] = parts[0].replace("(", "").replace(")", "").split(" IS ")
+                line_info['type'] = 'NONE'
+                rules.append(atomic_trim(parts[0]))
             # result
-            line_info['result'] = parts[1].split(" IS ")[1]
+            line_info['rules'] = rules
+            line_info['output'] = parts[1].split(" IS ")[1]
 
             res.append(line_info)
 
