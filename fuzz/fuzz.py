@@ -1,3 +1,11 @@
+"""
+First we need to import the parameter package
+"""
+import sys, os
+
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'parameter'))
+
+# -------
 from parameter import Parameter
 
 
@@ -26,13 +34,17 @@ class EFS:
         self.parameters.pop(name)
 
     def Param(self, name):  # choosing parameters
-        for i in parameters.keys():
+        for i in self.parameters.keys():
             if i == name:
                 return self.parameters.get(name)
         return NULL
 
     def Info(self):  # EFS information
+        temp = {}
+        for p in self.parameters.keys():
+            temp[p] = self.parameters.get(p).Info()
+
         return dict(
             Length=len(self.parameters),
-            Parameters=self.parameters
+            Parameters=temp
         )
