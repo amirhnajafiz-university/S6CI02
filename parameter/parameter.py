@@ -25,14 +25,12 @@ class Parameter:
         return self
     
     def LeftFunction(self, a, b):  # setting the left function parameters
-        self.lbf.a = a
-        self.lbf.b = b
+        self.lbf.update(dict(a=a, b=b))
 
         return self
 
     def RightFunction(self, a, b):  # setting the right function parameters
-        self.rbf.a = a
-        self.rbf.b = b
+        self.rbf.update(dict(a=a, b=b))
 
         return self 
 
@@ -50,8 +48,17 @@ class Parameter:
         if x <= self.range[0]:  # left 
             return self.lrv
         elif x > self.range[0] and x < self.range[2]:  # middle left
-            return self.lbf.a * x + self.lbf.b
+            return self.lbf.get('a') * x + self.lbf.get('b')
         elif x >= self.range[2] and x < self.range[1]:  # middle right
-            return self.rbf.a * x + self.rbf.b
+            return self.rbf.get('a') * x + self.rbf.get('b')
         elif x >= self.range[1]:  # right
             return self.rrv
+
+    def Info(self):
+        return dict(
+            Range=self.range,
+            LeftBaseFunction=self.lbf,
+            RightBaseFunction=self.rbf,
+            LeftRangeValue=self.lrv,
+            RightRangeValue=self.rrv
+        )
