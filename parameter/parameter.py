@@ -18,8 +18,6 @@ class Parameter:
         # parameter range values
         self.rrv = 1
         self.lrv = 1
-
-        return self
     
     def Range(self, newRange):  # setting the parameter range
         self.range = newRange
