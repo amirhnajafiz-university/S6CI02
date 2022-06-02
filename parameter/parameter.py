@@ -60,7 +60,7 @@ class Parameter:
         elif x >= self.range[1]:  # right
             return self.rrv
 
-    def Info(self):
+    def Info(self):  # printing the info of our parameter
         return dict(
             Range=self.range,
             LeftBaseFunction=self.lbf,
