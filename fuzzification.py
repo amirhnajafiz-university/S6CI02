@@ -16,6 +16,9 @@ def initialize():
 
 def fuzzify(input):
     system = initialize()
+    res = {}
+    
     for x in input.keys():
-        print(x, input.get(x))
-        print(system.Input(x, input.get(x)))
+        res[x] = system.Input(x, input.get(x))
+    
+    return res

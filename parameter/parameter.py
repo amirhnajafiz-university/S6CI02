@@ -28,7 +28,7 @@ class Parameter:
         for i in self.sessions.keys():
             if i == name:
                 return self.sessions.get(name)
-        return NULL 
+        return None 
     
     def Input(self, x):
         temp = {}
