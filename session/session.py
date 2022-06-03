@@ -49,6 +49,15 @@ class Session:
         self.rrv = value
 
         return self
+    
+    def GetRange(self):  # get our session range
+        return self.range
+
+    def GetRightFunction(self):  # get right function
+        return self.rbf
+    
+    def GetLeftFunction(self):  # get left function
+        return self.lbf
 
     def Input(self, x):  # calculating the output of session
         if self.range[0] == self.range[1]:

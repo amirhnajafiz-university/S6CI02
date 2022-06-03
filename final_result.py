@@ -1,5 +1,6 @@
 from fuzzification import fuzzify
 from inference import begin
+from defuzzification import defuzzify
 
 class ProvideResult(object):
     def __new__(cls):
@@ -11,4 +12,4 @@ class ProvideResult(object):
     def get_final_result(input_dict: dict) -> str:
         f = fuzzify(input_dict)
         r = begin(f)
-        print(r)
+        return defuzzify(r)
