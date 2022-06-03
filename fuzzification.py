@@ -1,9 +1,12 @@
-import simplejson
 from fuzz.fuzz import EFS
 from decimal import Decimal
 
 
-def initialize():
+"""
+this method will create our expert fuzzy system
+with the parameters that we set.
+"""
+def create_system():
     # create a EFS instance
     f = EFS()
 
@@ -21,7 +24,7 @@ def initialize():
     f.Param('exercise').NewSession('false').Range([0, 0, 0])
 
     f.NewParam('age').NewSession('young').Range([29, 38, 29]).LeftValue(1)
-    f.Param('age').NewSession('mid').Range([33, 45, 38])
+    f.Param('age').NewSession('mild').Range([33, 45, 38])
     f.Param('age').NewSession('old').Range([40, 58, 48])
     f.Param('age').NewSession('very_old').Range([52, 60, 60]).RightValue(1)
 
@@ -30,7 +33,7 @@ def initialize():
     f.Param('blood_pressure').NewSession('high').Range([142, 172, 157])
     f.Param('blood_pressure').NewSession('very_high').Range([154, 171, 171]).RightValue(1)
 
-    f.NewParam('blood_sugar').NewSession('very_high').Range([105, 120, 120]).RightValue(1)
+    f.NewParam('blood_sugar').NewSession('true').Range([105, 120, 120]).RightValue(1)
 
     f.NewParam('cholestrol').NewSession('low').Range([151, 197, 151]).LeftValue(1)
     f.Param('cholestrol').NewSession('medium').Range([188, 250, 215])
@@ -57,8 +60,12 @@ def initialize():
     return f
 
 
+"""
+fuzzify method will get our inputs and then
+change them to fuzzy logic data.
+"""
 def fuzzify(input):
-    system = initialize()
+    system = create_system()
     res = {}
 
     for x in input.keys():
