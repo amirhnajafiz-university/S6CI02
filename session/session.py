@@ -25,17 +25,17 @@ class Session:
     def Range(self, newRange):  # setting the session range
         self.range = newRange
 
-        self.LeftFunction(lin_equ((self.range[0], 0), (self.range[2], 1)))
-        self.RightFunction(lin_equ((self.range[2], 1), (self.range[1], 0)))
+        self.__left_function(lin_equ((self.range[0], 0), (self.range[2], 1)))
+        self.__right_function(lin_equ((self.range[2], 1), (self.range[1], 0)))
 
         return self
     
-    def LeftFunction(self, value):  # setting the left function 
+    def __left_function(self, value):  # setting the left function 
         self.lbf.update(dict(a=value[0], b=value[1]))
 
         return self
 
-    def RightFunction(self, value):  # setting the right function
+    def __right_function(self, value):  # setting the right function
         self.rbf.update(dict(a=value[0], b=value[1]))
 
         return self 
@@ -50,22 +50,17 @@ class Session:
 
         return self
     
-    def GetRange(self):  # get our session range
-        return self.range
-
-    def GetRightFunction(self):  # get right function
-        return self.rbf
-    
-    def GetLeftFunction(self):  # get left function
-        return self.lbf
+    def CheckPoint(self, x, y):  # check if a given point is inside the session or not
+        return (x >= self.range[0] and x <= self.range[1]) and (self.Input(x) >= y and y >= 0)
 
     def Input(self, x):  # calculating the output of session
+        # check the single value sessions
         if self.range[0] == self.range[1]:
             if self.range[0] == x:
                 return 1
             else:
                 return 0
-
+        # check the range value sessions
         if x <= self.range[0]:  # left 
             return self.lrv
         elif x > self.range[0] and x < self.range[2]:  # middle left
@@ -75,7 +70,7 @@ class Session:
         elif x >= self.range[1]:  # right
             return self.rrv
 
-    def Info(self):  # printing the info of our session
+    def Info(self):  # getting the info of our session
         return dict(
             Range=self.range,
             LeftBaseFunction=self.lbf,
