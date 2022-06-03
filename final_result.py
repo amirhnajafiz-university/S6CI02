@@ -11,6 +11,12 @@ class ProvideResult(object):
     @staticmethod
     def get_final_result(input_dict: dict) -> str:
         f = fuzzify(input_dict)  # fuzzification
+        print(f'[Fuzzify] len: {len(f)}')
+
         r = begin(f)  # inference
         print(r)
-        return defuzzify(r)  # defuzzification
+
+        d = defuzzify(r)  # defuzzification
+        print(f'[Result] {d}')
+
+        return d

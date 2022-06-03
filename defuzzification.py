@@ -10,7 +10,9 @@ SCALE = 1000
 LIMIT_Y = 0.1
 LIMIT_X = 4
 
-
+"""
+this method will defuzzify our output.
+"""
 def defuzzify(input):
     # our output parameter
     output = Parameter()
