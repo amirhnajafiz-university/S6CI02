@@ -26,11 +26,11 @@ def begin(inputs):
             v1 = inputs.get(rule.get('rules')[0][0]).get(rule.get('rules')[0][1])
             v2 = inputs.get(rule.get('rules')[1][0]).get(rule.get('rules')[1][1])
             # check the complex rule type
-            if rule.get('type') == "AND":  # for and we use min
+            if rule.get('type') == "MIN":  # for and we use min
                 score = min(v1, v2)
-            elif rule.get('type') == "OR":  # for or we use max
+            elif rule.get('type') == "MAX":  # for or we use max
                 score = max(v1, v2)
-        
+
         # now we update the outputs
         if result in outputs.keys():
             outputs[result] = max(outputs[result], score)
