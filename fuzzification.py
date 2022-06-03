@@ -32,10 +32,10 @@ def initialize():
 
     f.NewParam('blood_sugar').NewSession('veryhigh').Range([105, 120, 120]).RightValue(1)
 
-    f.NewParam('cholesterol').NewSession('low').Range([151, 197, 151]).LeftValue(1)
-    f.Param('cholesterol').NewSession('medium').Range([188, 250, 215])
-    f.Param('cholesterol').NewSession('high').Range([217, 307, 263])
-    f.Param('cholesterol').NewSession('veryhigh').Range([281, 347, 347]).RightValue(1)
+    f.NewParam('cholestrol').NewSession('low').Range([151, 197, 151]).LeftValue(1)
+    f.Param('cholestrol').NewSession('medium').Range([188, 250, 215])
+    f.Param('cholestrol').NewSession('high').Range([217, 307, 263])
+    f.Param('cholestrol').NewSession('veryhigh').Range([281, 347, 347]).RightValue(1)
 
     f.NewParam('heart_rate').NewSession('low').Range([100, 141, 100]).LeftValue(1)
     f.Param('heart_rate').NewSession('medium').Range([111, 194, 152])
