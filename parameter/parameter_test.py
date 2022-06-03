@@ -1,4 +1,13 @@
 """
+First we need to import the parameter package
+"""
+import sys, os
+
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'session'))
+
+#----
+
+"""
 Testing our parameter class.
 """
 

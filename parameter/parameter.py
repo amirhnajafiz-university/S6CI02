@@ -1,12 +1,4 @@
-"""
-First we need to import the parameter package
-"""
-import sys, os
-
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'session'))
-
-#----
-from session import Session
+from session.session import Session
 
 
 """
