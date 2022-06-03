@@ -23,19 +23,19 @@ def initialize():
     f.NewParam('age').NewSession('young').Range([29, 38, 29]).LeftValue(1)
     f.Param('age').NewSession('mid').Range([33, 45, 38])
     f.Param('age').NewSession('old').Range([40, 58, 48])
-    f.Param('age').NewSession('veryold').Range([52, 60, 60]).RightValue(1)
+    f.Param('age').NewSession('very_old').Range([52, 60, 60]).RightValue(1)
 
     f.NewParam('blood_pressure').NewSession('low').Range([111, 134, 111]).LeftValue(1)
     f.Param('blood_pressure').NewSession('medium').Range([127, 153, 139])
     f.Param('blood_pressure').NewSession('high').Range([142, 172, 157])
-    f.Param('blood_pressure').NewSession('veryhigh').Range([154, 171, 171]).RightValue(1)
+    f.Param('blood_pressure').NewSession('very_high').Range([154, 171, 171]).RightValue(1)
 
-    f.NewParam('blood_sugar').NewSession('veryhigh').Range([105, 120, 120]).RightValue(1)
+    f.NewParam('blood_sugar').NewSession('very_high').Range([105, 120, 120]).RightValue(1)
 
     f.NewParam('cholestrol').NewSession('low').Range([151, 197, 151]).LeftValue(1)
     f.Param('cholestrol').NewSession('medium').Range([188, 250, 215])
     f.Param('cholestrol').NewSession('high').Range([217, 307, 263])
-    f.Param('cholestrol').NewSession('veryhigh').Range([281, 347, 347]).RightValue(1)
+    f.Param('cholestrol').NewSession('very_high').Range([281, 347, 347]).RightValue(1)
 
     f.NewParam('heart_rate').NewSession('low').Range([100, 141, 100]).LeftValue(1)
     f.Param('heart_rate').NewSession('medium').Range([111, 194, 152])
