@@ -23,6 +23,7 @@ def begin(inputs):
         else:  # a complex rule
             result = rule.get('output')
             # calculating each parts value
+            print(rule)
             v1 = inputs.get(rule.get('rules')[0][0]).get(rule.get('rules')[0][1])
             v2 = inputs.get(rule.get('rules')[1][0]).get(rule.get('rules')[1][1])
             # check the complex rule type

@@ -34,6 +34,7 @@ def create_system():
     f.Param('blood_pressure').NewSession('very_high').Range([154, 171, 171]).RightValue(1)
 
     f.NewParam('blood_sugar').NewSession('true').Range([105, 120, 120]).RightValue(1)
+    f.Param('blood_sugar').NewSession('false').Range([105, 120, 105]).LeftValue(1)
 
     f.NewParam('cholestrol').NewSession('low').Range([151, 197, 151]).LeftValue(1)
     f.Param('cholestrol').NewSession('medium').Range([188, 250, 215])
