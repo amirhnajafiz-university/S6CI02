@@ -31,7 +31,10 @@ class Parameter:
         return NULL 
     
     def Input(self, x):
-        return [s.Input(x) for s in self.sessions.values()]
+        temp = {}
+        for s in self.sessions.keys():
+            temp[s] = self.sessions.get(name).Input(x)
+        return temp
 
     def Info(self):  # session information
         temp = {}
