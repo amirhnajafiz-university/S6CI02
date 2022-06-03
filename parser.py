@@ -3,9 +3,6 @@ Parser get rules method reads the rules files and returns the rules.
 """
 
 
-import simplejson
-
-
 AND_OPERATOR = 'AND'
 OR_OPERATOR = 'OR'
 
@@ -52,6 +49,3 @@ def getRules():
             res.append(line_info)
 
         return res
-
-
-print(simplejson.dumps(getRules(), sort_keys=True, indent=4, use_decimal=True))
