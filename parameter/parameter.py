@@ -44,9 +44,9 @@ class Parameter:
     def Info(self):  # session information
         temp = {}
         for s in self.sessions.keys():
-            temp[s] = self.sessions.get(p).Info()
+            temp[s] = self.sessions.get(s).Info()
         
         return dict(
-            Length=len(self.sessions)
+            Length=len(self.sessions),
             Sessions=temp
         )
