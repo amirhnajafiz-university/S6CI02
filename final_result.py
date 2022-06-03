@@ -12,4 +12,5 @@ class ProvideResult(object):
     def get_final_result(input_dict: dict) -> str:
         f = fuzzify(input_dict)  # fuzzification
         r = begin(f)  # inference
+        print(r)
         return defuzzify(r)  # defuzzification

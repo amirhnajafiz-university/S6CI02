@@ -21,7 +21,7 @@ def defuzzify(input):
     output.NewSession('sick_4').Range([3, 3.75, 3.75]).RightValue(1)
 
     # getting our center of mass
-    y, x = calculate(initialize(input))
+    y, x = calculate(create_ground(input, output))
 
     return float(x / SCALE)  # revert the scaling
 
@@ -35,19 +35,19 @@ def create_ground(values, p):
     scaled_y = int(LIMIT_Y * SCALE)
 
     # create a empty ground
-    ground = np.zeros((scaled_x, scaled_y))
+    ground = np.zeros((scaled_y, scaled_x))
 
     # loop into our values
     for key in values.keys():
         # first we get the session
         v = values.get(key)
         for y in range(scaled_y):  # loop in y
-            y_prime = float(y / scale)
+            y_prime = float(y / SCALE)
             if y_prime > v:  # check the result line first
                 continue
             # now loop in x
             for x in range(scaled_x):
-                x_prime = float(x / scale)
+                x_prime = float(x / SCALE)
                 # if that point is inside a session then we mark a 1 on its ground
                 if p.With(key).CheckPoint(x_prime, y_prime):
                     ground[y][x] = 1
