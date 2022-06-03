@@ -25,7 +25,23 @@ def defuzzify(input):
     # getting our center of mass
     y, x = calculate(create_ground(input, output))
 
-    return round(Decimal(x / SCALE), 5)  # revert the scaling
+    return translate(round(Decimal(x / SCALE), 5))  # revert the scaling
+
+
+"""
+this method translates the output number to a set name.
+"""
+def translate(value):
+    if value < 1.78:
+        return "Healthy"
+    elif value > 1 and value < 2.51:
+        return "Sick (s1)"
+    elif value > 1.78 and value < 3.25:
+        return "Sick (s2)"
+    elif value > 1.5 and value < 4.5:
+        return "Sick (s3)"
+    elif value > 3.25:
+        return "Sick (s4)"
 
 
 """

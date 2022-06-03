@@ -1,0 +1,27 @@
+chest_pain:
+  typical_anginal: 1
+  atypical_anginal: 2
+  non_aginal_pain: 3
+  asymptomatic: 4
+
+sex:
+  male: 1
+  female: 2
+
+exercise: [true, false]
+
+age: ["young", "mild", "old", "very_old"]
+
+blood_pressure: ["low", "medium", "high", "very_high"]
+
+blood_sugar: [true, false]
+
+cholestrol: ["low", "medium", "high", "very_high"]
+
+heart_rate: ["low", "medium", "high"]
+
+ecg: ["normal", "abnormal", "hypertrophy"]
+
+old_peak: ["low", "risk", "terrible"]
+
+thallium_scan: ["normal", "medium", "high"]
