@@ -2,15 +2,22 @@
 Parser get rules method reads the rules files and returns the rules.
 """
 
-
+# two basic operators in our rules
 AND_OPERATOR = 'AND'
 OR_OPERATOR = 'OR'
 
 
+"""
+this method trims the IS sentence.
+"""
 def atomic_trim(input):
     return input.replace("(", "").replace(")", "").split(" IS ")
 
 
+"""
+getting our rules by reading the rules.fcl and
+parsing our rules into dictionary.
+"""
 def getRules():
     with open('rules.fcl', 'r') as file:
         # create a dict

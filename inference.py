@@ -1,4 +1,3 @@
-import simplejson
 from parser import getRules
 
 
@@ -9,32 +8,33 @@ return answers.
 def begin(inputs):
     # getting the rules
     rules = getRules()
-    print(simplejson.dumps(rules, sort_keys=True, indent=4, use_decimal=True))
-    print(inputs)
 
     # creating a results set
-    results = {}
+    outputs = {}
+
     for rule in rules:
-        out = ""
+        # each rule has an result and score
+        result = ""
         score = 0
-        if rule.get('type') == "NONE":
-            out = rule.get('output')
+        # check the rule type
+        if rule.get('type') == "NONE":  # a single rule
+            result = rule.get('output')
             score = inputs.get(rule.get('rules')[0][0]).get(rule.get('rules')[0][1])
-        else:
-            out = rule.get('output')
+        else:  # a complex rule
+            result = rule.get('output')
+            # calculating each parts value
             v1 = inputs.get(rule.get('rules')[0][0]).get(rule.get('rules')[0][1])
             v2 = inputs.get(rule.get('rules')[1][0]).get(rule.get('rules')[1][1])
-            if rule.get('type') == "AND":
+            # check the complex rule type
+            if rule.get('type') == "AND":  # for and we use min
                 score = min(v1, v2)
-            elif rule.get('type') == "OR":
+            elif rule.get('type') == "OR":  # for or we use max
                 score = max(v1, v2)
         
-        if score == None:
-            score = 0
-        
-        if out in results.keys():
-            results[out] = max(results[out], score)
+        # now we update the outputs
+        if result in outputs.keys():
+            outputs[result] = max(outputs[result], score)
         else:
-            results[out] = score
+            outputs[result] = score
     
-    return results
+    return outputs
