@@ -11,4 +11,4 @@ class ProvideResult(object):
     def get_final_result(input_dict: dict) -> str:
         f = fuzzify(input_dict)
         r = begin(f)
-        print(f)
+        print(r)

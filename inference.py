@@ -1,5 +1,5 @@
 import simplejson
-from parser import getRules, AND_OPERATOR, OR_OPERATOR
+from parser import getRules
 
 
 """
@@ -13,22 +13,28 @@ def begin(inputs):
     print(inputs)
 
     # creating a results set
-    results = []
+    results = {}
     for rule in rules:
+        out = ""
+        score = 0
         if rule.get('type') == "NONE":
-            temp = {}
-            temp['result'] = rule.get('output')
-            temp['score'] = inputs.get(rule.get('rules')[0][0]).get(rule.get('rules')[0][1])
-            results.append(temp)
+            out = rule.get('output')
+            score = inputs.get(rule.get('rules')[0][0]).get(rule.get('rules')[0][1])
         else:
-            temp = {}
-            temp['result'] = rule.get('output')
+            out = rule.get('output')
             v1 = inputs.get(rule.get('rules')[0][0]).get(rule.get('rules')[0][1])
             v2 = inputs.get(rule.get('rules')[1][0]).get(rule.get('rules')[1][1])
-            if rule.get('type') == AND_OPERATOR:
-                temp['score'] = min(v1, v2)
-            elif rule.get('type') == OR_OPERATOR:
-                temp['score'] = max(v1, v2)
-            results.append(temp)
+            if rule.get('type') == "AND":
+                score = min(v1, v2)
+            elif rule.get('type') == "OR":
+                score = max(v1, v2)
+        
+        if score == None:
+            score = 0
+        
+        if out in results.keys():
+            results[out] = max(results[out], score)
+        else:
+            results[out] = score
     
     return results
