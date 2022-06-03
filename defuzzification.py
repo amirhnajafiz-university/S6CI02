@@ -23,7 +23,7 @@ def defuzzify(input):
     # getting our center of mass
     y, x = calculate(create_ground(input, output))
 
-    return float(x / SCALE)  # revert the scaling
+    return round(Decimal(x / SCALE), 5)  # revert the scaling
 
 
 """
