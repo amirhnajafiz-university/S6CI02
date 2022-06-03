@@ -19,8 +19,8 @@ class Session:
         self.lbf = dict(a=1, b=0)
         self.rbf = dict(a=1, b=0)
         # session range values
-        self.rrv = 1
-        self.lrv = 1
+        self.rrv = 0
+        self.lrv = 0
     
     def Range(self, newRange):  # setting the session range
         self.range = newRange
@@ -51,6 +51,12 @@ class Session:
         return self
 
     def Input(self, x):  # calculating the output of session
+        if self.range[0] == self.range[1]:
+            if self.range[0] == x:
+                return 1
+            else:
+                return 0
+
         if x <= self.range[0]:  # left 
             return self.lrv
         elif x > self.range[0] and x < self.range[2]:  # middle left
