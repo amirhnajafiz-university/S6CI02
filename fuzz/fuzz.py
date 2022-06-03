@@ -27,7 +27,7 @@ class EFS:
                 return self.parameters.get(name)
         return None
     
-    def Input(self, name, x):
+    def Input(self, name, x):  # selecting a param and give the input to it
         p = self.Param(name)
         if p == None:
             return {}
