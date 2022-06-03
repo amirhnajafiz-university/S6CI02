@@ -30,7 +30,7 @@ class EFS:
     def Input(self, name, x):
         p = self.Param(name)
         if p == None:
-            return []
+            return {}
         return p.Input(x)
 
     def Info(self):  # EFS information

@@ -1,4 +1,5 @@
 from fuzzification import fuzzify
+from inference import begin
 
 class ProvideResult(object):
     def __new__(cls):
@@ -9,4 +10,5 @@ class ProvideResult(object):
     @staticmethod
     def get_final_result(input_dict: dict) -> str:
         f = fuzzify(input_dict)
-        print(f)
+        r = begin(f)
+        print(r)
