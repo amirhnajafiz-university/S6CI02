@@ -23,22 +23,25 @@ class Parameter:
         # create a directory of sessions
         self.sessions = {}
     
-    def NewSession(self, name):
+    def NewSession(self, name):  # adding new sessions
         s = Session()
         self.sessions[name] = s 
 
         return s
     
-    def DelSession(self, name):
+    def DelSession(self, name):  # removing sessions
         self.sessions.pop(name)
 
-    def With(self, name):
+    def With(self, name):  # choosing a session
         for i in self.sessions.keys():
             if i == name:
                 return self.sessions.get(name)
         return NULL 
     
-    def Info(self):
+    def Input(self, x):
+        return [s.Input(x) for s in self.sessions.values()]
+
+    def Info(self):  # session information
         temp = {}
         for s in self.sessions.keys():
             temp[s] = self.sessions.get(p).Info()
