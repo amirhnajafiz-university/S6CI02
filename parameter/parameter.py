@@ -30,7 +30,7 @@ class Parameter:
                 return self.sessions.get(name)
         return None 
     
-    def Input(self, x):
+    def Input(self, x):  # check the results for an input
         temp = {}
         for s in self.sessions.keys():
             temp[s] = self.sessions.get(s).Input(x)
