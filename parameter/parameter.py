@@ -33,7 +33,7 @@ class Parameter:
     def Input(self, x):
         temp = {}
         for s in self.sessions.keys():
-            temp[s] = self.sessions.get(name).Input(x)
+            temp[s] = self.sessions.get(s).Input(x)
         return temp
 
     def Info(self):  # session information
