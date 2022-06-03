@@ -13,16 +13,16 @@ Session class.
 """
 class Session:
     def __init__(self):  # constructor
-        # parameter range
+        # session range
         self.range = [0, 0, 0]
-        # parameter base functions
+        # session base functions
         self.lbf = dict(a=1, b=0)
         self.rbf = dict(a=1, b=0)
-        # parameter range values
+        # session range values
         self.rrv = 1
         self.lrv = 1
     
-    def Range(self, newRange):  # setting the parameter range
+    def Range(self, newRange):  # setting the session range
         self.range = newRange
 
         self.LeftFunction(lin_equ((self.range[0], 0), (self.range[2], 1)))
@@ -30,12 +30,12 @@ class Session:
 
         return self
     
-    def LeftFunction(self, value):  # setting the left function parameters
+    def LeftFunction(self, value):  # setting the left function 
         self.lbf.update(dict(a=value[0], b=value[1]))
 
         return self
 
-    def RightFunction(self, value):  # setting the right function parameters
+    def RightFunction(self, value):  # setting the right function
         self.rbf.update(dict(a=value[0], b=value[1]))
 
         return self 
@@ -50,7 +50,7 @@ class Session:
 
         return self
 
-    def Input(self, x):  # calculating the output of parameter
+    def Input(self, x):  # calculating the output of session
         if x <= self.range[0]:  # left 
             return self.lrv
         elif x > self.range[0] and x < self.range[2]:  # middle left
@@ -60,7 +60,7 @@ class Session:
         elif x >= self.range[1]:  # right
             return self.rrv
 
-    def Info(self):  # printing the info of our parameter
+    def Info(self):  # printing the info of our session
         return dict(
             Range=self.range,
             LeftBaseFunction=self.lbf,
