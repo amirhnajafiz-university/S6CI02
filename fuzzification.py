@@ -1,5 +1,6 @@
 import simplejson
 from fuzz.fuzz import EFS
+from decimal import Decimal
 
 
 def initialize():
@@ -61,6 +62,6 @@ def fuzzify(input):
     res = {}
 
     for x in input.keys():
-        res[x] = system.Input(x, input.get(x))
+        res[x] = system.Input(x, Decimal(input.get(x)))
     
     return res

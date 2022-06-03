@@ -77,6 +77,8 @@ class Session:
 
 
 def lin_equ(l1, l2):  # calculating the line from two points
+    if l2[0] - l1[0] == 0:
+        return 0, 1
     m = Decimal((l2[1] - l1[1])) / Decimal(l2[0] - l1[0])
-    c = (l2[1] - (m * l2[0]))
+    c = (Decimal(l2[1]) - (m * Decimal(l2[0])))
     return m, c
