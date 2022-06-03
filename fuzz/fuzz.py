@@ -25,7 +25,13 @@ class EFS:
         for i in self.parameters.keys():
             if i == name:
                 return self.parameters.get(name)
-        return NULL
+        return None
+    
+    def Input(self, name, x):
+        p = self.Param(name)
+        if p == None:
+            return []
+        return p.Input(x)
 
     def Info(self):  # EFS information
         temp = {}
