@@ -5,8 +5,8 @@ chest_pain:
   asymptomatic: 4
 
 sex:
-  male: 1
-  female: 2
+  male: 0
+  female: 1
 
 exercise: [true, false]
 

@@ -20,7 +20,7 @@ def defuzzify(input):
     output.NewSession('sick_1').Range([0, 2, 1])
     output.NewSession('sick_2').Range([1, 3, 2])
     output.NewSession('sick_3').Range([2, 4, 3])
-    output.NewSession('sick_4').Range([3, 3.75, 3.75]).RightValue(1)
+    output.NewSession('sick_4').Range([3, 4, 4]).RightValue(1)
 
     # getting our center of mass
     y, x = calculate(create_ground(input, output))
